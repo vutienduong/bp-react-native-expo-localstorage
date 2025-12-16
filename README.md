@@ -1,8 +1,20 @@
-# Welcome to your Expo app 👋
+# React Native TODO App with Local Storage
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A full-featured TODO application built with Expo and React Native, featuring persistent local storage using AsyncStorage.
 
-## Get started
+## Features
+
+- ✅ Add, edit, and delete TODOs
+- ✅ Mark TODOs as complete/incomplete
+- ✅ Filter by All/Active/Completed status
+- ✅ Clear all completed TODOs
+- ✅ Persistent storage across app restarts
+- ✅ Full light/dark theme support
+- ✅ Haptic feedback on interactions
+- ✅ Smooth keyboard handling
+- ✅ Cross-platform (iOS, Android, Web)
+
+## Get Started
 
 1. Install dependencies
 
@@ -16,35 +28,83 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+In the output, you'll find options to open the app in:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
 - [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- [Expo Go](https://expo.dev/go)
+- Web browser
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Usage
 
-## Get a fresh project
+- **Add TODO**: Type in the input field and tap the + button or press Enter
+- **Complete TODO**: Tap the checkbox next to a TODO item
+- **Edit TODO**: Long-press on a TODO item to enter edit mode
+- **Delete TODO**: Tap the trash icon on a TODO item
+- **Filter TODOs**: Use the All/Active/Completed buttons to filter your list
+- **Clear Completed**: Tap "Clear Completed" to remove all completed items
 
-When you're ready, run:
+## Tech Stack
 
-```bash
-npm run reset-project
+- **React Native** 0.81.5
+- **Expo** ~54.0
+- **Expo Router** - File-based routing
+- **AsyncStorage** - Persistent local storage
+- **TypeScript** - Type safety
+- **React Navigation** - Bottom tab navigation
+- **Expo Haptics** - Tactile feedback
+
+## Project Structure
+
+```
+app/
+├── (tabs)/           # Tab navigation screens
+│   ├── index.tsx     # Home screen (TODO app)
+│   └── explore.tsx   # Explore screen
+└── _layout.tsx       # Root layout with theme provider
+
+components/
+├── todo-input.tsx    # Input component for adding TODOs
+├── todo-item.tsx     # Individual TODO item component
+├── themed-view.tsx   # Theme-aware View wrapper
+├── themed-text.tsx   # Theme-aware Text wrapper
+└── ui/               # Reusable UI components
+
+hooks/
+├── use-async-storage.ts  # Custom hook for TODO storage
+├── use-color-scheme.ts   # Color scheme detection
+└── use-theme-color.ts    # Theme color management
+
+types/
+└── todo.ts           # TypeScript type definitions
+
+constants/
+└── theme.ts          # Theme colors and fonts
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Development
 
-## Learn more
+```bash
+# Run on specific platforms
+npm run android
+npm run ios
+npm run web
 
-To learn more about developing your project with Expo, look at the following resources:
+# Linting
+npm run lint
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Architecture
 
-## Join the community
+This app uses:
+- **Expo Router** for file-based routing
+- **Custom hooks** for state management (no Redux/Zustand needed)
+- **AsyncStorage** for persistent storage with optimistic updates
+- **Theme system** with automatic light/dark mode support
+- **TypeScript** for type safety throughout
 
-Join our community of developers creating universal apps.
+## Learn More
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [Expo documentation](https://docs.expo.dev/)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
+- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/)
